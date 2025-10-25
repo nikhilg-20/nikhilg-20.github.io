@@ -4,139 +4,196 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nikhil Ghugare | Data Science Portfolio</title>
-  <meta name="description" content="Data Science • Machine Learning • Analytics" />
+  <meta name="description" content="MS in Data Science at Seattle University. Data Analysis • Machine Learning • Data Engineering." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0f1115; --card:#161922; --muted:#9aa3b2; --text:#e8ecf1; --accent:#7dd3fc;
-      --ring:#1f4aff33; --shadow:0 10px 30px rgba(0,0,0,.25);
-    }
+    :root{ --bg:#0f1115; --card:#161922; --muted:#9aa3b2; --text:#e8ecf1; --accent:#7dd3fc; --shadow:0 10px 30px rgba(0,0,0,.25); }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;line-height:1.6}
     a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
     .wrap{max-width:1060px;margin:0 auto;padding:28px}
-    header{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin:8px 0 18px}
-    .name{font-weight:800;font-size:clamp(24px,3vw,32px)}
-    .tag{color:var(--muted)}
-    .pillrow{display:flex;flex-wrap:wrap;gap:10px}
+    header{text-align:center;margin:20px 0 28px}
+    header img{border-radius:50%;border:2px solid #1f2430;width:120px;height:120px;object-fit:cover;margin-bottom:10px}
+    .name{font-weight:800;font-size:clamp(26px,3vw,34px)}
+    .tag{color:var(--muted);margin-top:4px}
+    .pillrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
     .pill{padding:8px 12px;border:1px solid #222a36;border-radius:999px;background:#131722}
+    .meta{color:var(--muted);font-size:13px}
     .section{margin:34px 0}
     .title{font-weight:800;margin:0 0 8px;font-size:clamp(18px,2.2vw,22px)}
     .grid{display:grid;gap:14px}
     .cards{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
     .card{background:var(--card);border:1px solid #1f2430;border-radius:14px;padding:18px;box-shadow:var(--shadow)}
     .card h3{margin:0 0 6px;font-size:16px}
-    .meta{color:var(--muted);font-size:13px}
-    ul{margin:8px 0 0;padding-left:18px}
-    li{margin:6px 0}
-    .kicker{font-size:13px;color:var(--muted);margin:4px 0 14px}
-    footer{margin:36px 0 10px;border-top:1px solid #1f2430;padding-top:14px;color:var(--muted);font-size:13px}
-    .hero{display:grid;gap:12px}
-    .cta{display:flex;flex-wrap:wrap;gap:10px}
+    ul{margin:8px 0 0;padding-left:18px} li{margin:6px 0}
+    .list-two{columns:2;column-gap:28px} @media (max-width:640px){.list-two{columns:1}}
     .btn{background:#0b1220;border:1px solid #22304a;color:var(--text);padding:10px 14px;border-radius:10px}
     .btn:hover{border-color:#345b8f}
-    .subtle{color:var(--muted)}
-    .list-two{columns:2;column-gap:28px}
-    @media (max-width:640px){.list-two{columns:1}}
+    footer{margin:36px 0 10px;border-top:1px solid #1f2430;padding-top:14px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* Resume modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;padding:24px;z-index:50}
+    .modal.open{display:flex}
+    .modal-card{background:#0b0e14;border:1px solid #1f2430;border-radius:14px;max-width:1000px;width:100%;height:min(90vh,1100px);display:flex;flex-direction:column}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid #1f2430}
+    .modal-head h3{margin:0;font-size:16px}
+    .close{border:1px solid #22304a;border-radius:8px;background:#131722;color:#e8ecf1;padding:6px 10px;cursor:pointer}
+    .pdfwrap{flex:1}
+    .pdfwrap iframe{width:100%;height:100%;border:0;border-bottom-left-radius:14px;border-bottom-right-radius:14px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div>
-        <div class="name">Nikhil Ghugare</div>
-        <div class="tag">Data Science • Machine Learning • Analytics</div>
-      </div>
+      <img src="profile.jpg" alt="Profile photo of Nikhil Ghugare">
+      <div class="name">Nikhil Ghugare</div>
+      <div class="tag">Data Science • Machine Learning • Data Engineering</div>
+      <div class="meta" style="margin-top:6px;">Seattle, WA • +1 (206) 535-9528</div>
       <div class="pillrow">
-        <a class="pill" href="mailto:nikhil.ghugare20702@gmail.com">Email</a>
-        <a class="pill" href="https://www.linkedin.com/in/nikhilg2103/">LinkedIn</a>
-        <a class="pill" href="https://github.com/nikhilg-20">GitHub</a>
-        <a class="pill" href="/Nikhil_Ghugare_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        <a class="pill" href="mailto:nikhil.ghugare20702@gmail.com">nikhil.ghugare20702@gmail.com</a>
+        <a class="pill" href="https://www.linkedin.com/in/nikhilg2103/">linkedin.com/in/nikhilg2103</a>
+        <a class="pill" href="https://github.com/nikhilg-20">github.com/nikhilg-20</a>
+        <button class="pill" id="viewResumeBtn">View Résumé</button>
       </div>
+      <div class="meta" style="margin-top:10px;">Seattle University — Master of Science in Data Science</div>
     </header>
 
-    <section class="hero card">
-      <div class="kicker">About</div>
+    <!-- ABOUT -->
+    <section class="card">
+      <div class="meta">About</div>
       <p>
-        MS in Data Science at Seattle University. I build ML models, analytics dashboards, and data pipelines that turn messy data into decisions.
-        Recent work: HR analytics across 5 countries at Motherson; fraud detection with XGBoost; CNNs for bioacoustics.
+        MS in Data Science (June 2026). I build ML models, analytics dashboards, and data pipelines that turn raw data into decisions.
+        Experience includes HR analytics across 5 countries at Motherson Group, XGBoost-based fraud detection, and CNNs for bioacoustics.
       </p>
-      <div class="cta">
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
         <a class="btn" href="#projects">View Projects</a>
         <a class="btn" href="#experience">Experience</a>
       </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills" class="section">
-      <h2 class="title">Skills</h2>
+      <h2 class="title">Technical Skills</h2>
       <div class="card">
         <div class="list-two">
-          <div><strong>Programming:</strong> Python, R, SQL, Java, C++</div>
-          <div><strong>ML & DL:</strong> scikit-learn, TensorFlow, PyTorch, XGBoost, CNN, NLP</div>
-          <div><strong>Data Eng & Cloud:</strong> AWS, GCP, PySpark, Hive, Docker, ETL Pipelines</div>
-          <div><strong>Visualization & GIS:</strong> Power BI, Tableau, ArcGIS Pro, Matplotlib, Seaborn</div>
+          <div><strong>Programming & Analytics:</strong> Python, R, SQL, Java, C++, Excel (Pivot Tables, VLOOKUP, Data Cleaning, Data Reporting)</div>
+          <div><strong>ML & AI:</strong> scikit-learn, TensorFlow, PyTorch, XGBoost, Keras, CNNs, SVM, NLP (BERT, SpaCy, VADER)</div>
+          <div><strong>Data Eng & Cloud:</strong> AWS (EC2, S3, Lambda, EKS), GCP, Azure, Hadoop, PySpark, Hive, Docker, MySQL, MongoDB, ETL Pipelines, Data Warehousing</div>
+          <div><strong>Visualization & GIS:</strong> Power BI, Tableau, ArcGIS Pro, Matplotlib, Seaborn, Plotly, Google Charts</div>
+          <div><strong>GenAI & Pro Skills:</strong> RAG Pipelines, LangChain, GenAI Tools (Gemini, Claude, Cursor), Communication, Leadership</div>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
-      <h2 class="title">Projects</h2>
-      <div class="grid cards">
-        <a class="card" href="https://ijsrem.com/download/a-critical-analysis-of-machine-learning-techniques-for-online-transaction-security/">
-          <h3>Online Transaction Fraud Detection</h3>
-          <div class="meta">Python • XGBoost • scikit-learn • MySQL</div>
-          <p>Reduced false positives via feature engineering + hyperparameter tuning; end-to-end ML pipeline.</p>
-        </a>
-        <a class="card" href="https://github.com/nikhilg-20/Youth-Drug-Use-Risk-Modeling">
-          <h3>Youth Drug Use Risk Modeling</h3>
-          <div class="meta">Python • XGBoost • SVM • SMOTE</div>
-          <p>Processed 55K+ records; high ROC-AUC & recall for early risk prediction.</p>
-        </a>
-        <a class="card" href="https://github.com/nikhilg-20/Bird-Sound-Classifier">
-          <h3>Bird Audio Classification (CNN)</h3>
-          <div class="meta">TensorFlow • Keras • Librosa</div>
-          <p>Mel-spectrogram pipeline; &gt;90% precision in noisy audio for 12 species.</p>
-        </a>
-      </div>
-    </section>
-
+    <!-- EXPERIENCE -->
     <section id="experience" class="section">
       <h2 class="title">Experience</h2>
       <div class="grid">
         <div class="card">
-          <h3>Motherson Group — Data Science Intern</h3>
-          <div class="meta">Jun–Aug 2025 • Houston, USA</div>
+          <h3>Motherson Group – Chairman’s Office, Americas • <span class="meta">Data Science Intern</span></h3>
+          <div class="meta">Jun 2025 – Aug 2025 • Houston, USA</div>
           <ul>
-            <li>Automated Power BI dashboards across 5 countries / 80+ entities; KPI standardization & data integration.</li>
-            <li>SQL + Excel transformations for reliable data reporting; dashboard automation for leadership.</li>
+            <li>Automated Power BI dashboards integrating HR & salary data from 5 countries and 80+ entities; real-time tracking and leadership insights via dashboard automation.</li>
+            <li>SQL + Excel extraction, cleaning, and transformation across multisource datasets; improved reliability for data reporting.</li>
+            <li>Interactive visuals for manpower, recruitment, and compensation trends to support executive decisions.</li>
+            <li>Standardized KPIs and automated ETL workflows with HR/Finance while maintaining confidentiality of sensitive data.</li>
           </ul>
         </div>
+
         <div class="card">
-          <h3>Prodigy InfoTech — Data Science Intern</h3>
-          <div class="meta">Jan–Feb 2024 • Mumbai, India</div>
+          <h3>Prodigy InfoTech • <span class="meta">Data Science Intern</span></h3>
+          <div class="meta">Jan 2024 – Feb 2024 • Mumbai, India</div>
           <ul>
-            <li>EDA with pandas/NumPy; forecasting models (Linear Regression, Random Forest).</li>
-            <li>SQL/MySQL/Oracle schema design and query optimization; ERP data modeling.</li>
+            <li>EDA with pandas/NumPy/matplotlib to surface trends for predictive analytics.</li>
+            <li>Forecasting models (Linear Regression, Random Forest) to enhance predictive accuracy.</li>
+            <li>SQL/MySQL/Oracle for extraction, schema design, and query optimization for ERP systems.</li>
+            <li>Translated analysis into dashboards and reports to improve workflow efficiency.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="research" class="section">
-      <h2 class="title">Research</h2>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2 class="title">Projects & Research</h2>
+      <div class="grid cards">
+        <a class="card" href="https://ijsrem.com/download/a-critical-analysis-of-machine-learning-techniques-for-online-transaction-security/">
+          <h3>Online Transaction Fraud Detection</h3>
+          <div class="meta">Python • scikit-learn • XGBoost • MySQL</div>
+          <p>Built & optimized XGBoost models; reduced false positives through feature engineering and tuning.</p>
+        </a>
+        <a class="card" href="https://github.com/nikhilg-20/Youth-Drug-Use-Risk-Modeling">
+          <h3>Youth Drug Use Risk Modeling</h3>
+          <div class="meta">Python • XGBoost • SVM • SMOTE</div>
+          <p>Processed 55K+ records with SMOTE balancing; high ROC-AUC & recall for early risk detection.</p>
+        </a>
+        <a class="card" href="https://github.com/nikhilg-20/Bird-Sound-Classifier">
+          <h3>Bird Audio Classification (CNN)</h3>
+          <div class="meta">TensorFlow • Keras • Librosa</div>
+          <p>Mel-spectrogram pipeline and custom CNN; &gt;90% precision across 12 species in noisy audio.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <h2 class="title">Education</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Seattle University — Master of Science in Data Science</h3>
+          <div class="meta">Expected Jun 2026 • Seattle, WA</div>
+          <p class="meta">Relevant Coursework: Statistical Machine Learning, Big Data Analytics, Data Visualization & Business Intelligence</p>
+        </div>
+        <div class="card">
+          <h3>Savitribai Phule Pune University — Bachelor’s in Computer Engineering</h3>
+          <div class="meta">May 2024 • Pune, India</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements" class="section">
+      <h2 class="title">Leadership & Achievements</h2>
       <div class="card">
         <ul>
-          <li>Co-authored publications in <strong>IEEE</strong> and <strong>Springer</strong> (fraud detection, privacy-preserving ML).</li>
+          <li>Winner (College) & 1st Runner-Up (Zonal) — I2E Idea Pitching Competition by AICTE & IIC (eco-friendly plastic/paper recycling model).</li>
+          <li>Co-authored 2 research papers published in IEEE and Springer (machine learning & data-driven applications).</li>
+          <li>Presented analytical dashboards and findings to leadership, enabling data-informed planning.</li>
         </ul>
       </div>
     </section>
 
     <footer>
-      © <span id="y"></span> Nikhil Ghugare • Open to Data Analyst · Data Engineer · ML Engineer roles
+      © <span id="y"></span> Nikhil Ghugare — Seattle, WA • Open to Data Analyst · Data Engineer · ML Engineer roles
       <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
     </footer>
   </div>
+
+  <!-- Résumé Modal (view-only) -->
+  <div class="modal" id="resumeModal" aria-hidden="true" role="dialog" aria-label="Résumé viewer">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h3>Résumé — Nikhil Ghugare</h3>
+        <button class="close" id="closeResume">Close</button>
+      </div>
+      <div class="pdfwrap">
+        <!-- View-only: opens inside an iframe; no download attribute -->
+        <iframe src="/Nikhil_Ghugare_Resume.pdf#view=FitH" title="Nikhil Ghugare Resume PDF"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('resumeModal');
+    const openBtn = document.getElementById('viewResumeBtn');
+    const closeBtn = document.getElementById('closeResume');
+
+    openBtn?.addEventListener('click', () => modal.classList.add('open'));
+    closeBtn?.addEventListener('click', () => modal.classList.remove('open'));
+    modal?.addEventListener('click', (e)=>{ if(e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') modal.classList.remove('open'); });
+  </script>
 </body>
 </html>
