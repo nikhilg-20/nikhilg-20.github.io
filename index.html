@@ -3,86 +3,171 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nikhil Ghugare | Data Science Portfolio</title>
-  <meta name="description" content="MS in Data Science at Seattle University. Data Analysis • Machine Learning • Data Engineering." />
+  <title>Nikhil Ghugare | Data Analyst • ML • Data Eng</title>
+  <meta name="description" content="Portfolio of Nikhil Ghugare — MS in Data Science at Seattle University. Data Analyst • Machine Learning • Data Engineering." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    :root{ --bg:#0f1115; --card:#161922; --muted:#9aa3b2; --text:#e8ecf1; --accent:#7dd3fc; --shadow:0 10px 30px rgba(0,0,0,.25); }
+    :root{
+      /* colors */
+      --bg:#0f1021;
+      --panel:#141632;
+      --text:#eef3ff;
+      --muted:#b9c3e6;
+      --brand:#7b5cff;
+      --brand2:#7de1ff;
+      --brand3:#ff9bd2;
+      --ring:#ffffff1f;
+      /* sizing */
+      --max:1100px;
+      --radius:18px;
+      --shadow:0 18px 40px rgba(0,0,0,.35);
+    }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;line-height:1.6}
-    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{max-width:1060px;margin:0 auto;padding:28px}
-    header{text-align:center;margin:20px 0 28px}
-    header img{border-radius:50%;border:2px solid #1f2430;width:120px;height:120px;object-fit:cover;margin-bottom:10px}
-    .name{font-weight:800;font-size:clamp(26px,3vw,34px)}
-    .tag{color:var(--muted);margin-top:4px}
-    .pillrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}
-    .pill{padding:8px 12px;border:1px solid #222a36;border-radius:999px;background:#131722}
-    .meta{color:var(--muted);font-size:13px}
-    .section{margin:34px 0}
-    .title{font-weight:800;margin:0 0 8px;font-size:clamp(18px,2.2vw,22px)}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Poppins,Inter,system-ui,Segoe UI,Arial,sans-serif;line-height:1.65}
+    a{color:var(--brand2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:0 auto;padding:22px}
+
+    /* top nav */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+    .logo{font-weight:800;letter-spacing:.2px}
+    .nav a{color:var(--text)}
+    .navlinks{display:flex;gap:18px;flex-wrap:wrap}
+    .sayhi{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#0b0b14;border:none;border-radius:999px;padding:10px 16px;font-weight:700}
+    .sayhi:hover{filter:brightness(1.05);cursor:pointer}
+
+    /* hero */
+    .hero{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:28px;
+      border:1px solid var(--ring);
+      border-radius:var(--radius);
+      background:linear-gradient(160deg,#181a3d 0%, #11122b 100%);
+      padding:32px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-60px -40px auto auto;
+      width:650px; height:650px; z-index:-1;
+      background:
+        radial-gradient(350px 350px at 75% 25%, rgba(125,225,255,.28), transparent 60%),
+        radial-gradient(360px 360px at 40% 70%, rgba(255,155,210,.25), transparent 60%),
+        radial-gradient(320px 320px at 70% 60%, rgba(123,92,255,.25), transparent 60%);
+      filter: blur(6px);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:auto -80px -100px -80px;
+      height:260px; z-index:-1;
+      background:
+        radial-gradient(200px 200px at 10% 50%, rgba(125,225,255,.18), transparent 60%),
+        radial-gradient(240px 240px at 45% 80%, rgba(255,155,210,.18), transparent 60%),
+        radial-gradient(260px 260px at 85% 60%, rgba(123,92,255,.18), transparent 60%);
+      opacity:.85;
+    }
+    .hi{font-size:clamp(28px,4vw,40px);font-weight:800;margin:0}
+    .role{font-weight:800;color:var(--brand2)}
+    .edu{color:var(--muted);margin-top:12px}
+    .ctaRow{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+    .btn{border:1px solid var(--ring);background:#121431;color:var(--text);padding:10px 16px;border-radius:12px}
+    .btn.brand{background:linear-gradient(90deg,var(--brand),var(--brand2));border:none;color:#070716;font-weight:700}
+    .kickers{margin-top:18px;color:var(--muted)}
+    /* right photo oval */
+    .portraitWrap{
+      display:flex;align-items:center;justify-content:center;
+      position:relative;
+    }
+    .portrait{
+      width:100%; max-width:360px; aspect-ratio:3/4; object-fit:cover;
+      border-radius:46% 46% 48% 48% / 56% 56% 44% 44%; /* oval capsule */
+      border:3px solid #ffffff1a;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      background:
+        radial-gradient(120px 120px at 60% 15%, rgba(123,92,255,.35), transparent 60%),
+        radial-gradient(160px 160px at 30% 75%, rgba(125,225,255,.35), transparent 60%);
+    }
+
+    /* sections */
+    .section{margin:36px 0}
+    .title{font-size:22px;font-weight:800;margin:0 0 10px}
+    .card{background:var(--panel);border:1px solid var(--ring);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
     .grid{display:grid;gap:14px}
     .cards{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{background:var(--card);border:1px solid #1f2430;border-radius:14px;padding:18px;box-shadow:var(--shadow)}
-    .card h3{margin:0 0 6px;font-size:16px}
-    ul{margin:8px 0 0;padding-left:18px} li{margin:6px 0}
-    .list-two{columns:2;column-gap:28px} @media (max-width:640px){.list-two{columns:1}}
-    .btn{background:#0b1220;border:1px solid #22304a;color:var(--text);padding:10px 14px;border-radius:10px}
-    .btn:hover{border-color:#345b8f}
-    footer{margin:36px 0 10px;border-top:1px solid #1f2430;padding-top:14px;color:var(--muted);font-size:13px;text-align:center}
+    .card h3{margin:0 0 4px;font-size:16px}
+    .meta{color:var(--muted);font-size:13px}
+    ul{margin:6px 0 0;padding-left:18px}
+    li{margin:6px 0}
+    .list2{columns:2;column-gap:26px} @media(max-width:680px){.hero{grid-template-columns:1fr}.list2{columns:1}}
+    footer{margin:42px 0 16px;text-align:center;color:var(--muted);border-top:1px solid var(--ring);padding-top:14px}
 
-    /* Resume modal */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;padding:24px;z-index:50}
+    /* resume modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;padding:22px;z-index:50}
     .modal.open{display:flex}
-    .modal-card{background:#0b0e14;border:1px solid #1f2430;border-radius:14px;max-width:1000px;width:100%;height:min(90vh,1100px);display:flex;flex-direction:column}
-    .modal-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid #1f2430}
-    .modal-head h3{margin:0;font-size:16px}
-    .close{border:1px solid #22304a;border-radius:8px;background:#131722;color:#e8ecf1;padding:6px 10px;cursor:pointer}
-    .pdfwrap{flex:1}
-    .pdfwrap iframe{width:100%;height:100%;border:0;border-bottom-left-radius:14px;border-bottom-right-radius:14px}
+    .modalCard{background:#0b0e1a;border:1px solid var(--ring);border-radius:16px;max-width:1000px;width:100%;height:min(92vh,1100px);display:flex;flex-direction:column}
+    .modalHead{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--ring)}
+    .modalHead h3{margin:0;font-size:16px}
+    .close{border:1px solid var(--ring);border-radius:10px;background:#141735;color:var(--text);padding:6px 10px;cursor:pointer}
+    .pdfWrap{flex:1}
+    .pdfWrap iframe{width:100%;height:100%;border:0;border-bottom-left-radius:16px;border-bottom-right-radius:16px}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <img src="profile.jpg" alt="Profile photo of Nikhil Ghugare">
-      <div class="name">Nikhil Ghugare</div>
-      <div class="tag">Data Science • Machine Learning • Data Engineering</div>
-      <div class="meta" style="margin-top:6px;">Seattle, WA • +1 (206) 535-9528</div>
-      <div class="pillrow">
-        <a class="pill" href="mailto:nikhil.ghugare20702@gmail.com">nikhil.ghugare20702@gmail.com</a>
-        <a class="pill" href="https://www.linkedin.com/in/nikhilg2103/">linkedin.com/in/nikhilg2103</a>
-        <a class="pill" href="https://github.com/nikhilg-20">github.com/nikhilg-20</a>
-        <button class="pill" id="viewResumeBtn">View Résumé</button>
-      </div>
-      <div class="meta" style="margin-top:10px;">Seattle University — Master of Science in Data Science</div>
-    </header>
 
-    <!-- ABOUT -->
-    <section class="card">
-      <div class="meta">About</div>
-      <p>
-        MS in Data Science (June 2026). I build ML models, analytics dashboards, and data pipelines that turn raw data into decisions.
-        Experience includes HR analytics across 5 countries at Motherson Group, XGBoost-based fraud detection, and CNNs for bioacoustics.
-      </p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a class="btn" href="#projects">View Projects</a>
-        <a class="btn" href="#experience">Experience</a>
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="logo">Nikhil&nbsp;G.</div>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skillset</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+      </div>
+      <a class="sayhi" href="mailto:nikhil.ghugare20702@gmail.com">Say Hi</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="about">
+      <div>
+        <h1 class="hi">I’m <span style="white-space:nowrap">Nikhil Ghugare</span>,<br> a <span class="role">Data Analyst / ML Engineer</span>.</h1>
+        <p class="edu">
+          Seattle, WA • +1 (206) 535-9528 •
+          <a href="mailto:nikhil.ghugare20702@gmail.com">nikhil.ghugare20702@gmail.com</a><br>
+          <a href="https://www.linkedin.com/in/nikhilg2103/">linkedin.com/in/nikhilg2103</a> •
+          <a href="https://github.com/nikhilg-20">github.com/nikhilg-20</a><br>
+          <strong>Seattle University</strong> — Master of Science in Data Science (Jun 2026)
+        </p>
+        <div class="ctaRow">
+          <button class="btn brand" id="viewResumeBtn">View Résumé</button>
+          <a class="btn" href="#projects">Discover my work</a>
+        </div>
+        <p class="kickers">I build ML models, analytics dashboards, and data pipelines that turn raw data into decisions.</p>
+      </div>
+      <div class="portraitWrap">
+        <img class="portrait" src="profile.jpg" alt="Nikhil Ghugare portrait" />
       </div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="section">
-      <h2 class="title">Technical Skills</h2>
+      <h2 class="title">Skillset</h2>
       <div class="card">
-        <div class="list-two">
+        <div class="list2">
           <div><strong>Programming & Analytics:</strong> Python, R, SQL, Java, C++, Excel (Pivot Tables, VLOOKUP, Data Cleaning, Data Reporting)</div>
           <div><strong>ML & AI:</strong> scikit-learn, TensorFlow, PyTorch, XGBoost, Keras, CNNs, SVM, NLP (BERT, SpaCy, VADER)</div>
           <div><strong>Data Eng & Cloud:</strong> AWS (EC2, S3, Lambda, EKS), GCP, Azure, Hadoop, PySpark, Hive, Docker, MySQL, MongoDB, ETL Pipelines, Data Warehousing</div>
-          <div><strong>Visualization & GIS:</strong> Power BI, Tableau, ArcGIS Pro, Matplotlib, Seaborn, Plotly, Google Charts</div>
-          <div><strong>GenAI & Pro Skills:</strong> RAG Pipelines, LangChain, GenAI Tools (Gemini, Claude, Cursor), Communication, Leadership</div>
+          <div><strong>Viz & GIS:</strong> Power BI, Tableau, ArcGIS Pro, Matplotlib, Seaborn, Plotly, Google Charts</div>
+          <div><strong>GenAI & Pro:</strong> RAG Pipelines, LangChain, GenAI Tools (Gemini, Claude, Cursor), Communication, Leadership</div>
         </div>
       </div>
     </section>
@@ -92,7 +177,7 @@
       <h2 class="title">Experience</h2>
       <div class="grid">
         <div class="card">
-          <h3>Motherson Group – Chairman’s Office, Americas • <span class="meta">Data Science Intern</span></h3>
+          <h3>Motherson Group — Data Science Intern</h3>
           <div class="meta">Jun 2025 – Aug 2025 • Houston, USA</div>
           <ul>
             <li>Automated Power BI dashboards integrating HR & salary data from 5 countries and 80+ entities; real-time tracking and leadership insights via dashboard automation.</li>
@@ -101,9 +186,8 @@
             <li>Standardized KPIs and automated ETL workflows with HR/Finance while maintaining confidentiality of sensitive data.</li>
           </ul>
         </div>
-
         <div class="card">
-          <h3>Prodigy InfoTech • <span class="meta">Data Science Intern</span></h3>
+          <h3>Prodigy InfoTech — Data Science Intern</h3>
           <div class="meta">Jan 2024 – Feb 2024 • Mumbai, India</div>
           <ul>
             <li>EDA with pandas/NumPy/matplotlib to surface trends for predictive analytics.</li>
@@ -117,12 +201,12 @@
 
     <!-- PROJECTS -->
     <section id="projects" class="section">
-      <h2 class="title">Projects & Research</h2>
+      <h2 class="title">Projects</h2>
       <div class="grid cards">
         <a class="card" href="https://ijsrem.com/download/a-critical-analysis-of-machine-learning-techniques-for-online-transaction-security/">
           <h3>Online Transaction Fraud Detection</h3>
           <div class="meta">Python • scikit-learn • XGBoost • MySQL</div>
-          <p>Built & optimized XGBoost models; reduced false positives through feature engineering and tuning.</p>
+          <p>Built & optimized XGBoost models; reduced false positives via feature engineering and tuning.</p>
         </a>
         <a class="card" href="https://github.com/nikhilg-20/Youth-Drug-Use-Risk-Modeling">
           <h3>Youth Drug Use Risk Modeling</h3>
@@ -144,56 +228,55 @@
         <div class="card">
           <h3>Seattle University — Master of Science in Data Science</h3>
           <div class="meta">Expected Jun 2026 • Seattle, WA</div>
-          <p class="meta">Relevant Coursework: Statistical Machine Learning, Big Data Analytics, Data Visualization & Business Intelligence</p>
+          <p class="meta">Coursework: Statistical Machine Learning, Big Data Analytics, Data Visualization & Business Intelligence</p>
         </div>
         <div class="card">
-          <h3>Savitribai Phule Pune University — Bachelor’s in Computer Engineering</h3>
+          <h3>Savitribai Phule Pune University — B.E. in Computer Engineering</h3>
           <div class="meta">May 2024 • Pune, India</div>
         </div>
       </div>
     </section>
 
-    <!-- ACHIEVEMENTS -->
-    <section id="achievements" class="section">
-      <h2 class="title">Leadership & Achievements</h2>
-      <div class="card">
-        <ul>
-          <li>Winner (College) & 1st Runner-Up (Zonal) — I2E Idea Pitching Competition by AICTE & IIC (eco-friendly plastic/paper recycling model).</li>
-          <li>Co-authored 2 research papers published in IEEE and Springer (machine learning & data-driven applications).</li>
-          <li>Presented analytical dashboards and findings to leadership, enabling data-informed planning.</li>
-        </ul>
-      </div>
-    </section>
-
     <footer>
-      © <span id="y"></span> Nikhil Ghugare — Seattle, WA • Open to Data Analyst · Data Engineer · ML Engineer roles
-      <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+      © <span id="y"></span> Nikhil Ghugare • Seattle, WA — Open to Data Analyst · Data Engineer · ML Engineer roles
     </footer>
   </div>
 
-  <!-- Résumé Modal (view-only) -->
+  <!-- Résumé modal -->
   <div class="modal" id="resumeModal" aria-hidden="true" role="dialog" aria-label="Résumé viewer">
-    <div class="modal-card">
-      <div class="modal-head">
+    <div class="modalCard">
+      <div class="modalHead">
         <h3>Résumé — Nikhil Ghugare</h3>
         <button class="close" id="closeResume">Close</button>
       </div>
-      <div class="pdfwrap">
-        <!-- View-only: opens inside an iframe; no download attribute -->
-        <iframe src="/Nikhil_Ghugare_Resume.pdf#view=FitH" title="Nikhil Ghugare Resume PDF"></iframe>
+      <div class="pdfWrap">
+        <iframe src="/NGG_Resume.pdf#view=FitH" title="Nikhil Ghugare Resume PDF"></iframe>
       </div>
     </div>
   </div>
 
   <script>
+    // footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // resume modal logic
     const modal = document.getElementById('resumeModal');
-    const openBtn = document.getElementById('viewResumeBtn');
+    const openBtn = document.getElementById('viewResumeBtn') || document.querySelector('.brand'); // hero main button
     const closeBtn = document.getElementById('closeResume');
 
-    openBtn?.addEventListener('click', () => modal.classList.add('open'));
-    closeBtn?.addEventListener('click', () => modal.classList.remove('open'));
-    modal?.addEventListener('click', (e)=>{ if(e.target === modal) modal.classList.remove('open'); });
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') modal.classList.remove('open'); });
+    // ensure the hero "View Résumé" opens the modal
+    document.getElementById('viewResumeBtn')?.addEventListener('click', ()=> modal.classList.add('open'));
+
+    // if the primary CTA is the gradient button (first in row)
+    document.querySelectorAll('#viewResumeBtn, .brand').forEach(el=>{
+      el.addEventListener('click', (e)=> {
+        if(el.id !== 'viewResumeBtn') return; // we already added above
+      });
+    });
+
+    closeBtn?.addEventListener('click', ()=> modal.classList.remove('open'));
+    modal?.addEventListener('click', (e)=> { if(e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') modal.classList.remove('open'); });
   </script>
 </body>
 </html>
