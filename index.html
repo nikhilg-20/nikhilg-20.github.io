@@ -153,9 +153,15 @@
         </div>
         <p class="kickers">I build ML models, analytics dashboards, and data pipelines that turn raw data into decisions.</p>
       </div>
-      <div class="portraitWrap">
-        <img src="assets/profile.png" alt="Nikhil Ghugare portrait">
-      </div>
+      <picture>
+  <source srcset="/profile.png?v=2" type="image/png">
+  <source srcset="/profile.jpg?v=2" type="image/jpeg">
+  <img class="portrait"
+       src="/profile.png?v=2"
+       alt="Nikhil Ghugare portrait"
+       onerror="this.onerror=null; this.src='/profile.jpg?v=2';">
+</picture>
+
     </section>
 
     <!-- SKILLS -->
