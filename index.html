@@ -10,75 +10,116 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-<style>
-/* ===== ORANGE/BLACK THEME OVERRIDES (no layout changes) ===== */
-:root{
-  --bg:#0b0b0f;      /* near-black */
-  --panel:#111112;   /* dark panels */
-  --text:#f5f7fb;
-  --muted:#c9cdda;
-  --brand:#ff7a18;   /* orange */
-  --brand2:#ffb627;  /* amber */
-  --brand3:#ffd399;  /* light amber */
-  --ring:#ffffff14;
-}
+  <style>
+    :root{
+      /* colors */
+      --bg:#0f1021;
+      --panel:#141632;
+      --text:#eef3ff;
+      --muted:#b9c3e6;
+      --brand:#7b5cff;
+      --brand2:#7de1ff;
+      --brand3:#ff9bd2;
+      --ring:#ffffff1f;
+      /* sizing */
+      --max:1100px;
+      --radius:18px;
+      --shadow:0 18px 40px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Poppins,Inter,system-ui,Segoe UI,Arial,sans-serif;line-height:1.65}
+    a{color:var(--brand2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:0 auto;padding:22px}
 
-/* page + links */
-html,body{ background:var(--bg); color:var(--text); }
-a{ color:var(--brand2); }
-a:hover{ color:var(--brand2); text-decoration:underline; }
+    /* top nav */
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
+    .logo{font-weight:800;letter-spacing:.2px}
+    .nav a{color:var(--text)}
+    .navlinks{display:flex;gap:18px;flex-wrap:wrap}
+    .sayhi{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#0b0b14;border:none;border-radius:999px;padding:10px 16px;font-weight:700}
+    .sayhi:hover{filter:brightness(1.05);cursor:pointer}
 
-/* primary CTA gradient */
-.btn.brand{
-  background:linear-gradient(90deg,var(--brand),var(--brand2));
-  border:none; color:#0b0b0b;
-}
+    /* hero */
+    .hero{
+      position:relative;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:28px;
+      border:1px solid var(--ring);
+      border-radius:var(--radius);
+      background:linear-gradient(160deg,#181a3d 0%, #11122b 100%);
+      padding:32px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-60px -40px auto auto;
+      width:650px; height:650px; z-index:-1;
+      background:
+        radial-gradient(350px 350px at 75% 25%, rgba(125,225,255,.28), transparent 60%),
+        radial-gradient(360px 360px at 40% 70%, rgba(255,155,210,.25), transparent 60%),
+        radial-gradient(320px 320px at 70% 60%, rgba(123,92,255,.25), transparent 60%);
+      filter: blur(6px);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:auto -80px -100px -80px;
+      height:260px; z-index:-1;
+      background:
+        radial-gradient(200px 200px at 10% 50%, rgba(125,225,255,.18), transparent 60%),
+        radial-gradient(240px 240px at 45% 80%, rgba(255,155,210,.18), transparent 60%),
+        radial-gradient(260px 260px at 85% 60%, rgba(123,92,255,.18), transparent 60%);
+      opacity:.85;
+    }
+    .hi{font-size:clamp(28px,4vw,40px);font-weight:800;margin:0}
+    .role{font-weight:800;color:var(--brand2)}
+    .edu{color:var(--muted);margin-top:12px}
+    .ctaRow{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+    .btn{border:1px solid var(--ring);background:#121431;color:var(--text);padding:10px 16px;border-radius:12px}
+    .btn.brand{background:linear-gradient(90deg,var(--brand),var(--brand2));border:none;color:#070716;font-weight:700}
+    .kickers{margin-top:18px;color:var(--muted)}
+    /* right photo oval */
+    .portraitWrap{
+      display:flex;align-items:center;justify-content:center;
+      position:relative;
+    }
+    .portrait{
+      width:100%; max-width:360px; aspect-ratio:3/4; object-fit:cover;
+      border-radius:46% 46% 48% 48% / 56% 56% 44% 44%; /* oval capsule */
+      border:3px solid #ffffff1a;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      background:
+        radial-gradient(120px 120px at 60% 15%, rgba(123,92,255,.35), transparent 60%),
+        radial-gradient(160px 160px at 30% 75%, rgba(125,225,255,.35), transparent 60%);
+    }
 
-/* HERO background glows -> orange */
-.hero{
-  background:
-    radial-gradient(380px 280px at 80% 20%, rgba(255,122,24,.10), transparent 60%),
-    radial-gradient(420px 320px at 35% 85%, rgba(255,182,39,.10), transparent 60%),
-    linear-gradient(160deg,#161616 0%, #0f0f0f 100%);
-}
-.hero::before{
-  background:
-    radial-gradient(360px 320px at 75% 25%, rgba(255,122,24,.28), transparent 60%),
-    radial-gradient(340px 300px at 40% 70%, rgba(255,182,39,.22), transparent 60%),
-    radial-gradient(300px 280px at 70% 60%, rgba(255,211,153,.18), transparent 60%);
-  filter:blur(8px);
-}
-.hero::after{
-  background:
-    radial-gradient(220px 200px at 10% 50%, rgba(255,122,24,.15), transparent 60%),
-    radial-gradient(240px 220px at 45% 80%, rgba(255,182,39,.14), transparent 60%),
-    radial-gradient(260px 240px at 85% 60%, rgba(255,211,153,.12), transparent 60%);
-  opacity:.9;
-}
+    /* sections */
+    .section{margin:36px 0}
+    .title{font-size:22px;font-weight:800;margin:0 0 10px}
+    .card{background:var(--panel);border:1px solid var(--ring);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .grid{display:grid;gap:14px}
+    .cards{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .card h3{margin:0 0 4px;font-size:16px}
+    .meta{color:var(--muted);font-size:13px}
+    ul{margin:6px 0 0;padding-left:18px}
+    li{margin:6px 0}
+    .list2{columns:2;column-gap:26px} @media(max-width:680px){.hero{grid-template-columns:1fr}.list2{columns:1}}
+    footer{margin:42px 0 16px;text-align:center;color:var(--muted);border-top:1px solid var(--ring);padding-top:14px}
 
-/* cards/panels tint */
-.card,.skillCard,.expCard,.projCard,.eduCard,.certCard{
-  background:linear-gradient(160deg,#151515 0%, #0e0e0e 100%);
-  border:1px solid #1c1c1c;
-}
-.card:hover,.skillCard:hover,.expCard:hover,.projCard:hover,.eduCard:hover,.certCard:hover{
-  border-color:var(--brand2);
-  box-shadow:0 10px 25px rgba(255,182,39,.18);
-}
-
-/* project/skill chips */
-.tags span{
-  background:linear-gradient(90deg, rgba(255,122,24,.18), rgba(255,182,39,.18));
-  border:1px solid #2a1d10;
-  color:#ffeedd;
-}
-
-/* portrait subtle warm ring */
-.portrait{ border:3px solid #ffffff12; box-shadow:0 12px 30px rgba(0,0,0,.45); }
-</style>
-
+    /* resume modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;padding:22px;z-index:50}
+    .modal.open{display:flex}
+    .modalCard{background:#0b0e1a;border:1px solid var(--ring);border-radius:16px;max-width:1000px;width:100%;height:min(92vh,1100px);display:flex;flex-direction:column}
+    .modalHead{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--ring)}
+    .modalHead h3{margin:0;font-size:16px}
+    .close{border:1px solid var(--ring);border-radius:10px;background:#141735;color:var(--text);padding:6px 10px;cursor:pointer}
+    .pdfWrap{flex:1}
+    .pdfWrap iframe{width:100%;height:100%;border:0;border-bottom-left-radius:16px;border-bottom-right-radius:16px}
+  </style>
 </head>
-
 <body>
   <div class="wrap">
 
@@ -99,132 +140,545 @@ a:hover{ color:var(--brand2); text-decoration:underline; }
     <!-- HERO -->
     <section class="hero" id="about">
       <div>
-        <h1 class="hi">I’m <span style="white-space:nowrap">Nikhil Ghugare</span>,<br><span class="role">Data Analyst / ML Engineer</span>.</h1>
+        <h1 class="hi">I’m <span style="white-space:nowrap">Nikhil Ghugare</span>,<br><span class="role">Data Analyst <br> ML Engineer</span>.</h1>
         <p class="edu">
           +1 (206) 535-9528 • Seattle, WA <br>
           <a href="mailto:nikhil.ghugare20702@gmail.com">Gmail</a> •
-          <a href="https://www.linkedin.com/in/nikhilg2103/">LinkedIn</a> •
-          <a href="https://github.com/nikhilg-20">GitHub</a><br>
-          <strong>Seattle University</strong> — Master of Science in Data Science
+          <a href="https://www.linkedin.com/in/nikhilg2103/">linkedin</a> •
+          <a href="https://github.com/nikhilg-20">Github</a><br>
+          <strong>Seattle University</strong> <br> Master of Science in Data Science
         </p>
         <div class="ctaRow">
           <button class="btn brand" id="viewResumeBtn">View Resume</button>
           <a class="btn" href="#projects">Discover my work</a>
         </div>
-        <p class="kickers">I turn data into decisions—crafting ML models, analytics dashboards, and automated pipelines that drive smarter business strategies and measurable outcomes.</p>
+        <p class="kickers">I turn data into decisions; crafting ML models, interactive analytics dashboards, and automated pipelines that drive smarter strategies and measurable outcomes.</p>
       </div>
-      <div class="portraitWrap">
-        <picture>
-          <source srcset="/profile.png?v=4" type="image/png">
-          <source srcset="/profile.jpg?v=4" type="image/jpeg">
-          <img class="portrait" src="/profile.png?v=4" alt="Nikhil Ghugare portrait" loading="eager" decoding="async">
-        </picture>
-      </div>
+      <picture>
+  <source srcset="/profile.png?v=2" type="image/png">
+  <source srcset="/profile.jpg?v=2" type="image/jpeg">
+  <!-- replace your existing portrait img -->
+<img class="portrait"
+     src="/profile.png?v=2"
+     alt="Nikhil Ghugare portrait"
+     loading="eager" decoding="async">
+
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="section">
-      <h2 class="title">Technical Skillset</h2>
-      <div class="skillGrid">
-        <div class="skillCard"><h3>Programming & Analytics 🧮</h3><p>Python • R • SQL • Java • C++ • Excel (Pivot Tables, Data Cleaning, Reporting)</p></div>
-        <div class="skillCard"><h3>Machine Learning & AI 🤖</h3><p>scikit-learn • TensorFlow • PyTorch • XGBoost • Keras • CNNs • NLP (BERT, SpaCy)</p></div>
-        <div class="skillCard"><h3>Data Engineering & Cloud ☁️</h3><p>AWS (EC2, S3, Lambda, EKS) • GCP • Azure • PySpark • Hive • Docker • MySQL • MongoDB</p></div>
-        <div class="skillCard"><h3>Visualization & GIS 📊</h3><p>Power BI • Tableau • ArcGIS Pro • Matplotlib • Seaborn • Plotly</p></div>
-        <div class="skillCard"><h3>GenAI & Professional ⚙️</h3><p>LangChain • Gemini • Claude • Cursor • Communication • Leadership</p></div>
-      </div>
-    </section>
+<section id="skills" class="section">
+  <h2 class="title">Technical Skillset</h2>
+  <div class="skillGrid">
+    <div class="skillCard">
+      <h3>Programming & Analytics 🧮</h3>
+      <p>Python • R • SQL • Java • C++ • Excel (Pivot Tables, Data Cleaning, Reporting)</p>
+    </div>
+    <div class="skillCard">
+      <h3>Machine Learning & AI 🤖</h3>
+      <p>scikit-learn • TensorFlow • PyTorch • XGBoost Keras • CNNs • NLP (BERT, SpaCy)</p>
+    </div>
+    <div class="skillCard">
+      <h3>Data Engineering & Cloud ☁️</h3>
+      <p>AWS (EC2, S3, Lambda, EKS) • GCP • Azure PySpark • Hive • Docker • MySQL • MongoDB</p>
+    </div>
+    <div class="skillCard">
+      <h3>Visualization & GIS 📊</h3>
+      <p>Power BI • Tableau • ArcGIS Pro • Matplotlib  Seaborn • Plotly</p>
+    </div>
+    <div class="skillCard">
+      <h3>GenAI & Professional ⚙️</h3>
+      <p>LangChain • Gemini • Claude • Cursor  Communication • Leadership</p>
+    </div>
+  </div>
+</section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <h2 class="title">Experience</h2>
-      <div class="expGrid">
-        <div class="expCard">
-          <h3>💼 Motherson Group — Data Science Intern</h3>
-          <p class="meta">Jun 2025 – Aug 2025 • Houston, USA</p>
-          <ul>
-            <li>Automated <strong>Power BI dashboards</strong> integrating HR & salary data from 5 countries and 80+ entities.</li>
-            <li>Utilized <strong>SQL + Excel</strong> for data extraction, cleaning, and transformation, improving reliability.</li>
-            <li>Built <strong>interactive visuals</strong> for manpower and compensation insights.</li>
-            <li>Standardized KPIs and automated <strong>ETL workflows</strong> with HR/Finance teams.</li>
-          </ul>
-        </div>
-        <div class="expCard">
-          <h3>📊 Prodigy InfoTech — Data Science Intern</h3>
-          <p class="meta">Jan 2024 – Feb 2024 • Mumbai, India</p>
-          <ul>
-            <li>Performed <strong>EDA</strong> with pandas/NumPy/matplotlib for trend discovery and insights.</li>
-            <li>Developed <strong>forecasting models</strong> using Linear Regression and Random Forest.</li>
-            <li>Worked with <strong>SQL, MySQL, Oracle</strong> for schema design and query optimization.</li>
-            <li>Created <strong>data-driven dashboards</strong> for workflow optimization.</li>
-          </ul>
-        </div>
-        <div class="expCard">
-          <h3>🌐 Oasis InfoByte — Web Development Intern</h3>
-          <p class="meta">Feb 2023 – Mar 2023 • Delhi, India</p>
-          <ul>
-            <li>Developed responsive sites using <strong>HTML, CSS, JavaScript, WordPress</strong>.</li>
-            <li>Designed <strong>UI/UX in Figma</strong> and implemented front-end components.</li>
-            <li>Collaborated on <strong>full-cycle web development</strong> improving user experience.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+<style>
+.skillGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+  margin-top:14px;
+}
+.skillCard{
+  background:linear-gradient(160deg,#161934 0%,#0e1023 100%);
+  border:1px solid #1f223a;
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  transition:.3s ease;
+}
+.skillCard:hover{
+  transform:translateY(-4px);
+  border-color:#7de1ff;
+  box-shadow:0 10px 25px rgba(125,225,255,.2);
+}
+.skillCard h3{margin:0 0 8px;font-size:16px;color:#7de1ff;}
+.skillCard p{margin:0;font-size:13.5px;color:#b9c3e6;line-height:1.6}
+</style>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <h2 class="title">Projects</h2>
-      <div class="projGrid">
-        <article class="projCard">
-          <h3>🛡️ Online Transaction Fraud Detection</h3>
-          <p class="meta">Python • scikit-learn • XGBoost • MySQL</p>
-          <p>Built and tuned XGBoost models on financial data; reduced false positives through feature engineering.</p>
-          <div class="tags"><span>EDA</span><span>Feature Eng</span><span>Model Tuning</span></div>
-          <div class="actions"><a class="btn" href="https://ijsrem.com/download/a-critical-analysis-of-machine-learning-techniques-for-online-transaction-security/" target="_blank">Read Paper</a></div>
-        </article>
-        <article class="projCard">
-          <h3>🧭 Youth Drug Use Risk Modeling</h3>
-          <p class="meta">Python • XGBoost • SVM • SMOTE</p>
-          <p>Processed 55k+ records, used SMOTE balancing and achieved high recall for early-risk detection.</p>
-          <div class="tags"><span>SMOTE</span><span>Grid Search</span><span>Explainability</span></div>
-          <div class="actions"><a class="btn" href="https://github.com/nikhilg-20/Youth-Drug-Use-Risk-Modeling" target="_blank">Code</a></div>
-        </article>
-        <article class="projCard">
-          <h3>🎶 Bird Audio Classification (CNN)</h3>
-          <p class="meta">TensorFlow • Keras • Librosa</p>
-          <p>Built CNN model for bird call identification; >90% precision using Mel spectrograms.</p>
-          <div class="tags"><span>CNN</span><span>Audio ML</span><span>Precision</span></div>
-          <div class="actions"><a class="btn" href="https://github.com/nikhilg-20/Bird-Sound-Classifier" target="_blank">Code</a></div>
-        </article>
-        <article class="projCard">
-          <h3>🅿️ Seattle Smart Parking Demand Prediction</h3>
-          <p class="meta">Python • Regression • Time Series</p>
-          <p>Used spatial and weather features from Seattle open data to forecast parking demand with regression.</p>
-          <div class="tags"><span>Regression</span><span>Feature Eng</span><span>RMSE</span></div>
-          <div class="actions"><a class="btn" href="https://github.com/nikhilg-20/seattle-parking-weather-analysis-main" target="_blank">Code</a></div>
-        </article>
-      </div>
-    </section>
 
-    <!-- EDUCATION -->
-    <section id="education" class="section">
-      <h2 class="title">Education</h2>
-      <div class="eduCard">
-        <h3>🎓 Seattle University</h3>
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <h2 class="title">Experience</h2>
+
+  <div class="expGrid">
+    <div class="expCard">
+      <div class="expHead">
+        <h3>💼 Motherson Group</h3>
+        <p class="role">Data Science Intern</p>
+        <p class="meta">Jun 2025 – Aug 2025 • Houston, USA</p>
+      </div>
+      <ul>
+        <li>Automated <strong>Power BI dashboards</strong> integrating HR & salary data from 5 countries and 80+ entities, providing real-time leadership insights.</li>
+        <li>Utilized <strong>SQL + Excel</strong> for data extraction, cleaning, and transformation, improving reliability across multisource datasets.</li>
+        <li>Built <strong>interactive visuals</strong> for manpower, recruitment, and compensation trends supporting executive decisions.</li>
+        <li>Standardized KPIs and automated <strong>ETL workflows</strong> with HR/Finance while maintaining data confidentiality.</li>
+      </ul>
+    </div>
+
+    <div class="expCard">
+      <div class="expHead">
+        <h3>📊 Prodigy InfoTech</h3>
+        <p class="role">Data Science Intern</p>
+        <p class="meta">Jan 2024 – Feb 2024 • Mumbai, India</p>
+      </div>
+      <ul>
+        <li>Conducted <strong>EDA</strong> on large datasets using pandas/NumPy/matplotlib to surface insights for predictive analytics.</li>
+        <li>Developed forecasting models (<strong>Linear Regression, Random Forest</strong>) to enhance business predictions.</li>
+        <li>Worked with <strong>SQL, MySQL, Oracle</strong> for schema design and query optimization in ERP systems.</li>
+        <li>Translated analysis into <strong>data-driven dashboards</strong> to improve workflow efficiency and decision-making.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="expCard">
+  <div class="expHead">
+    <h3>🌐 Oasis InfoByte</h3>
+    <p class="role">Web Development Intern</p>
+    <p class="meta">Feb 2023 – Mar 2023 • Delhi, India</p>
+  </div>
+  <ul>
+    <li>Developed responsive and interactive web interfaces using <strong>HTML, CSS, JavaScript, and WordPress</strong>, enhancing site usability and performance.</li>
+    <li>Created <strong>UI/UX designs in Figma</strong> and translated them into functional front-end components with strong visual appeal.</li>
+    <li>Collaborated on end-to-end <strong>web development initiatives</strong>, gaining deeper technical understanding of building seamless user experiences.</li>
+  </ul>
+</div>
+
+
+<style>
+.expGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:20px;
+  margin-top:16px;
+}
+.expCard{
+  background:linear-gradient(160deg,#161934 0%,#0e1023 100%);
+  border:1px solid #1f223a;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  transition:.3s ease;
+}
+.expCard:hover{
+  transform:translateY(-4px);
+  border-color:#7de1ff;
+  box-shadow:0 10px 25px rgba(125,225,255,.2);
+}
+.expHead h3{
+  margin:0;
+  font-size:17px;
+  color:#7de1ff;
+  font-weight:700;
+}
+.expHead .role{
+  margin:4px 0;
+  font-weight:600;
+  color:#ff9bd2;
+}
+.expHead .meta{
+  margin:0;
+  color:#b9c3e6;
+  font-size:13px;
+}
+.expCard ul{
+  margin-top:10px;
+  padding-left:20px;
+}
+.expCard li{
+  color:#c7cce8;
+  font-size:13.5px;
+  margin-bottom:6px;
+  line-height:1.55;
+}
+.expCard li strong{
+  color:#7de1ff;
+}
+</style>
+
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <h2 class="title">Projects</h2>
+
+  <div class="projGrid">
+    <!-- Project 1 -->
+    <article class="projCard">
+      <div class="projHead">
+        <h3>🛡️ Online Transaction Fraud Detection</h3>
+        <span class="meta">Python • scikit-learn • XGBoost • MySQL</span>
+      </div>
+      <p>Built and tuned XGBoost models on financial data; cut false positives via targeted feature engineering and hyper-parameter search.</p>
+      <div class="tags">
+        <span>EDA</span><span>Feature Eng</span><span>Model Tuning</span><span>ROC-AUC</span>
+      </div>
+      <div class="actions">
+        <a class="btnGhost" href="https://ijsrem.com/download/a-critical-analysis-of-machine-learning-techniques-for-online-transaction-security/" target="_blank" rel="noopener">Read Paper</a>
+      </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="projCard">
+      <div class="projHead">
+        <h3>🧭 Youth Drug Use Risk Modeling</h3>
+        <span class="meta">Python • XGBoost • SVM • SMOTE</span>
+      </div>
+      <p>Processed 55k+ records; handled severe class imbalance with SMOTE and achieved strong ROC-AUC/recall for early-risk identification.</p>
+      <div class="tags">
+        <span>SMOTE</span><span>Grid Search</span><span>Pipeline</span><span>Explainability</span>
+      </div>
+      <div class="actions">
+        <a class="btnGhost" href="https://github.com/nikhilg-20/Youth-Drug-Use-Risk-Modeling" target="_blank" rel="noopener">Code</a>
+      </div>
+    </article>
+
+    <!-- Project 3 -->
+    <article class="projCard">
+      <div class="projHead">
+        <h3>🎶 Bird Audio Classification (CNN)</h3>
+        <span class="meta">TensorFlow • Keras • Librosa</span>
+      </div>
+      <p>Converted raw MP3s to Mel spectrograms and trained a custom CNN; >90% precision across 12 species in noisy audio.</p>
+      <div class="tags">
+        <span>MelSpec</span><span>CNN</span><span>Augmentation</span><span>Precision</span>
+      </div>
+      <div class="actions">
+        <a class="btnGhost" href="https://github.com/nikhilg-20/Bird-Sound-Classifier" target="_blank" rel="noopener">Code</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Project 4 -->
+<article class="projCard">
+  <div class="projHead">
+    <h3>🅿️ Seattle Smart Parking Demand Prediction</h3>
+    <span class="meta">Python • Regression • Time Series • Feature Engineering</span>
+  </div>
+  <p>Engineered spatial, weather, and temporal features from Seattle open data to forecast parking demand using multiple regression, time-series decomposition, and data normalization techniques.</p>
+  <div class="tags">
+    <span>Regression</span><span>Feature Eng</span><span>RMSE</span><span>Cross-Validation</span><span>Ridge/Lasso</span>
+  </div>
+  <div class="actions">
+    <a class="btnGhost" href="https://github.com/nikhilg-20/seattle-parking-weather-analysis-main" target="_blank" rel="noopener">Code</a>
+  </div>
+</article>
+
+
+<style>
+.projGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* narrower cards */
+  gap: 18px;
+  margin-top: 14px;
+  align-items: start;
+}
+.projCard{
+  background:linear-gradient(160deg,#161934 0%,#0e1023 100%);
+  border:1px solid #1f223a;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  transition:.3s ease;
+}
+.projCard:hover{
+  transform:translateY(-4px);
+  border-color:#7de1ff;
+  box-shadow:0 10px 25px rgba(125,225,255,.2);
+}
+.projHead h3{
+  margin:0 0 4px;
+  font-size:17px;
+  color:#7de1ff;
+  font-weight:700;
+}
+.projHead .meta{
+  color:#b9c3e6; font-size:13px;
+}
+.projCard p{
+  margin:10px 0 12px; color:#c7cce8; font-size:13.5px; line-height:1.6;
+}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.tags span{
+  background:linear-gradient(90deg,#7b5cff33,#7de1ff33);
+  color:#cfe7ff; border:1px solid #283052;
+  padding:6px 10px; border-radius:999px; font-size:12px; font-weight:600;
+}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.btnGhost{
+  padding:8px 12px; border-radius:10px;
+  border:1px solid #253055; color:#e8ecf1; text-decoration:none;
+  background:#121431;
+}
+.btnGhost:hover{border-color:#7de1ff}
+</style>
+
+
+<!-- EDUCATION -->
+<section id="education" class="section">
+  <h2 class="title">Education</h2>
+
+  <div class="eduGrid">
+    <!-- Master's -->
+    <div class="eduCard">
+      <div class="eduIcon">🎓</div>
+      <div class="eduInfo">
+        <h3>Seattle University</h3>
+        <p class="degree">Master of Science in Data Science</p>
         <p class="meta">Expected Jun 2026 • Seattle, WA</p>
-        <p>Master of Science in Data Science — Coursework: Statistical Machine Learning, Big Data Analytics, Data Visualization & Business Intelligence</p>
+        <p class="courses">
+          Coursework: Statistical Machine Learning, Big Data Analytics, Data Visualization & Business Intelligence
+        </p>
       </div>
-      <div class="eduCard">
-        <h3>💻 Savitribai Phule Pune University</h3>
-        <p class="meta">May 2024 • Pune, India</p>
-        <p>Bachelor of Engineering in Computer Engineering — Coursework: Data Structures, ML, DBMS, Cloud Computing, AI, Software Development.</p>
-      </div>
-    </section>
+    </div>
 
-    <!-- CERTIFICATIONS -->
-    <section id="certifications" class="section">
-      <h2 class="title">Certifications</h2>
-      <div class="certGrid">
-        <div class="certCard"><h3>☁️ IBM – Introduction to Cloud</h3><p class="meta">Issued by IBM</p></div>
-        <div class="certCard"><h3>📊 Google Project Management</h3><p class="meta">Coursera</p></div>
-        <div class="certCard"><h3>🌐 IBM Cloud Essentials V3</h3><p class="meta">Issued by IBM</p></div>
-        <div class="certCard"><h3>📈 Google Data Analytics</h3><p class="meta">Coursera</p></div>
+    <!-- Bachelor's -->
+    <div class="eduCard">
+      <div class="eduIcon">💻</div>
+      <div class="eduInfo">
+        <h3>Savitribai Phule Pune University</h3>
+        <p class="degree">Bachelor of Engineering in Computer Engineering</p>
+        <p class="meta">May 2024 • Pune, India</p>
+        <p class="courses">
+          Coursework: Data Analysis and Algorithms, Data Structures, Database Management Systems (DBMS),
+          Artificial Intelligence, Software Development, Machine Learning, Computer Networks, Cloud Computing.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.eduGrid{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  margin-top:16px;
+  position:relative;
+  padding-left:20px;
+}
+.eduGrid::before{
+  content:"";
+  position:absolute;
+  left:10px;
+  top:12px;
+  bottom:12px;
+  width:2px;
+  background:linear-gradient(to bottom,#7b5cff,#7de1ff);
+  opacity:.4;
+}
+.eduCard{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  background:linear-gradient(160deg,#161934 0%,#0e1023 100%);
+  border:1px solid #1f223a;
+  border-radius:14px;
+  padding:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  transition:.3s ease;
+  position:relative;
+}
+.eduCard:hover{
+  transform:translateY(-4px);
+  border-color:#7de1ff;
+  box-shadow:0 10px 25px rgba(125,225,255,.2);
+}
+.eduIcon{
+  font-size:28px;
+  min-width:38px;
+  text-align:center;
+  color:#7de1ff;
+  margin-top:3px;
+}
+.eduInfo h3{
+  margin:0;
+  font-size:17px;
+  font-weight:700;
+  color:#7de1ff;
+}
+.degree{
+  margin:2px 0;
+  font-weight:600;
+  color:#ff9bd2;
+}
+.eduInfo .meta{
+  margin:0;
+  font-size:13px;
+  color:#b9c3e6;
+}
+.courses{
+  margin-top:8px;
+  color:#c7cce8;
+  font-size:13.5px;
+  line-height:1.55;
+}
+</style>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="section">
+  <h2 class="title">Certifications</h2>
+
+  <div class="certGrid">
+    <div class="certCard">
+      <div class="certIcon">☁️</div>
+      <div class="certInfo">
+        <h3>IBM – Introduction to Cloud</h3>
+        <p class="meta">Issued by IBM</p>
+      </div>
+    </div>
+
+    <div class="certCard">
+      <div class="certIcon">📊</div>
+      <div class="certInfo">
+        <h3>Google Project Management</h3>
+        <p class="meta">Coursera</p>
+      </div>
+    </div>
+
+    <div class="certCard">
+      <div class="certIcon">🌐</div>
+      <div class="certInfo">
+        <h3>IBM Cloud Essentials V3</h3>
+        <p class="meta">Issued by IBM</p>
+      </div>
+    </div>
+
+    <div class="certCard">
+      <div class="certIcon">📈</div>
+      <div class="certInfo">
+        <h3>Google Data Analytics</h3>
+        <p class="meta">Coursera</p>
+      </div>
+    </div>
+
+    <div class="certCard">
+      <div class="certIcon">🚀</div>
+      <div class="certInfo">
+        <h3>AWS Cloud Technical Essentials</h3>
+        <p class="meta">Issued by AWS</p>
+      </div>
+    </div>
+
+    <div class="certCard">
+      <div class="certIcon">🐍</div>
+      <div class="certInfo">
+        <h3>Programming for Everybody (Python)</h3>
+        <p class="meta">University of Michigan – Coursera</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.certGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+  margin-top:16px;
+}
+.certCard{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:linear-gradient(160deg,#161934 0%,#0e1023 100%);
+  border:1px solid #1f223a;
+  border-radius:14px;
+  padding:14px 18px;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  transition:.3s ease;
+}
+.certCard:hover{
+  transform:translateY(-4px);
+  border-color:#7de1ff;
+  box-shadow:0 10px 25px rgba(125,225,255,.2);
+}
+.certIcon{
+  font-size:26px;
+  color:#7de1ff;
+  min-width:34px;
+  text-align:center;
+}
+.certInfo h3{
+  margin:0;
+  font-size:15.5px;
+  color:#7de1ff;
+  font-weight:700;
+}
+.certInfo .meta{
+  margin:2px 0 0;
+  font-size:13px;
+  color:#b9c3e6;
+}
+</style>
+
+
+
+    <footer>
+      © <span id="y"></span> Nikhil Ghugare • Seattle, WA — Open to Data Analyst · Data Engineer · ML Engineer roles
+    </footer>
+  </div>
+
+  <!-- Résumé modal -->
+  <div class="modal" id="resumeModal" aria-hidden="true" role="dialog" aria-label="Résumé viewer">
+    <div class="modalCard">
+      <div class="modalHead">
+        <h3>Résumé — Nikhil Ghugare</h3>
+        <button class="close" id="closeResume">Close</button>
+      </div>
+      <div class="pdfWrap">
+        <iframe src="/NGG_Resume.pdf#view=FitH" title="Nikhil Ghugare Resume PDF"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // resume modal logic
+    const modal = document.getElementById('resumeModal');
+    const openBtn = document.getElementById('viewResumeBtn') || document.querySelector('.brand'); // hero main button
+    const closeBtn = document.getElementById('closeResume');
+
+    // ensure the hero "View Résumé" opens the modal
+    document.getElementById('viewResumeBtn')?.addEventListener('click', ()=> modal.classList.add('open'));
+
+    // if the primary CTA is the gradient button (first in row)
+    document.querySelectorAll('#viewResumeBtn, .brand').forEach(el=>{
+      el.addEventListener('click', (e)=> {
+        if(el.id !== 'viewResumeBtn') return; // we already added above
+      });
+    });
+
+    closeBtn?.addEventListener('click', ()=> modal.classList.remove('open'));
+    modal?.addEventListener('click', (e)=> { if(e.target === modal) modal.classList.remove('open'); });
+    document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') modal.classList.remove('open'); });
+  </script>
+</body>
+</html>
+
+
+
+I WANT BACKGROUND BLACK AND ORANGE IN GRADIENT SHADE
